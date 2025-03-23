@@ -550,7 +550,6 @@ a {
     margin: 100px auto; /* 左右をautoにして中央揃え */
     max-width: 1200px;
     min-height: 600px;
-    margin-bottom: 100px;
     text-align: center; /* 中央揃え */
 }
 
@@ -702,7 +701,7 @@ a {
 /* 画面が 1200px 以上の場合 */
 @media (max-width: 1200px) {
     .skills-content {
-      margin: 40px 20px; /* 画面幅に合わせて余白を調整 */
+      margin: 100px 20px; /* 画面幅に合わせて余白を調整 */
       padding: 30px;
     }
   
@@ -731,7 +730,7 @@ a {
   /* 画面が 768px 以上の場合 */
   @media (max-width: 768px) {
     .skills-content {
-      margin: 20px 20px;
+      margin: 100px 20px;
       padding: 20px;
     }
   
@@ -760,7 +759,7 @@ a {
   /* 画面が 480px 以上の場合 */
   @media (max-width: 480px) {
     .skills-content {
-      margin: 20px 20px;
+      margin: 100px 20px;
       padding: 15px;
     }
   
@@ -862,6 +861,7 @@ input[type="submit"]:hover {
     .contact-content.wrapper {
         height: auto;
         padding: 20px;
+        margin: 100px auto;
     }
 
     form {
