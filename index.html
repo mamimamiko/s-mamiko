@@ -3,6 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>portfolio</title>
         <meta name="description" content="ポートフォリオ">
         <link rel ="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
@@ -19,8 +20,24 @@
                         <img class="logo" src="images/logo.jpg" alt="Mamiko Shirono">
                     </a>
                 </h1>
-                
-                <nav>
+        
+                <!-- ハンバーガーメニューのアイコン -->
+                <div class="hamburger-menu">
+                    <input type="checkbox" id="menu-btn-check">
+                    <label for="menu-btn-check" class="menu-btn"><span></span></label>
+                    <!--ここからメニュー-->
+                    <div class="menu-content">
+                        <ul>
+                            <li><a href="index.html">Top</a></li>
+                        <li><a href="About_me.html">About</a></li>
+                        <li><a href="Works.html">Works</a></li>
+                        <li><a href="index.html#Skills">Skills</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <!--ここまでメニュー-->
+                </div>
+                <nav class="nav-menu">
                     <ul class="main-nav">
                         <li><a href="index.html">Top</a></li>
                         <li><a href="About_me.html">About</a></li>
@@ -31,34 +48,39 @@
                 </nav>
             </div>
         </header>
+        
 <section id="Top" class="home-content wrapper">
     <h2 class="page-title">Mamiko Shirono's</h2>
     <h2 class="page-title">Portfolio</h2>
 </section><!-- /.home-content --> 
 
 <div id="About" class="about-content wrapper">
-        <article>
-          <header class="post-info">
-            <h2 class="post-title">About me</h2>
-            <h3 class="title">私について</h3>
-        <div class="img-center">    
-            <img src="images/profile.jpg" alt="プロフィール写真">
-        </div>    
-            <h4>城野 万美子</h4>
-            <h5>Shirono Mamiko</h5>
-          </header>
-        <p>1999年8月、北海道札幌市出身。</p>
-        <p>上智大学を卒業後、人と関わる仕事がしたいと思い不動産会社へ就職し、
-           賃貸不動産営業として約2年間勤務。2024年10月、WEBCOACHへ入学し、
-           Webデザイナーとして転職するためにWebデザインの勉強を始める。
-        </p>
-        <a class="button" href="About_me.html">View Profile  > </a>
-        </article>
+    <div class="post-info">
+        <h2 class="post-title">About me</h2>
+        <h3 class="title">私について</h3>
+        
+        <div class="info-container"> <!-- 追加 -->
+            <div class="img-center">    
+                <img src="images/profile.jpg" alt="プロフィール写真">
+            </div>
+            
+            <div class="text-info"> <!-- 追加 -->
+                <h4>城野 万美子</h4>
+                <h5>Shirono Mamiko</h5>
+                <p>1999年8月、北海道札幌市出身。<br>
+                    上智大学を卒業後、人と関わる仕事がしたいと思い不動産会社へ就職し、
+                    賃貸不動産営業として約2年間勤務。2024年10月、WEBCOACHへ入学し、
+                    Webデザイナーとして転職するためにWebデザインの勉強を始める。
+                </p>
+                <a class="button" href="About_me.html">View Profile  > </a>
+            </div>
+        </div>
+    </div>
 </div>
+
     
 <div id="Works" class="works-content wrapper">
-        <article>
-          <header class="post-info">
+        <div class="post-info">
             <h2 class="post-title">Works</h2>
             <h3 class="title">制作物</h3>
             <div class="grid">
@@ -104,19 +126,18 @@
                     </a>
                 </div>
             </div>
-            
-        </article>
+     </div>
+</div>
      <div class="button-container">
         <a class="button2" href="Works.html">View More ></a>
-</div>
+     </div>
 
 <div id="Skills" class="skills-content wrapper">
 <div class="inner-border">
-    <article>
-        <header class="post-info">
+        <div class="post-info">
             <h2 class="post-title">Skills</h2>
             <h3 class="title">できること</h3>
-        </header>
+        </div>
             <p>WEBサイト、LP、バナー、名刺などのデザインが可能です。</p>
             <p>クライアントさまの意図を汲み取り、デザインにしっかりと反映させます。</p>
     <div class="box">
@@ -189,17 +210,16 @@
 </div>
     
 <div id="contact" class="contact-content wrapper">
-        <article>
-            <header class="post-info">
+            <div class="post-info">
                 <h2 class="post-title">Contact</h2>
                 <h3 class="title">お問い合わせ</h3>
-            </header>
+            </div>
                 <p>お仕事のご相談など、お気軽にご連絡ください！</p>
             <form action="#">
                 <div>
                     <label for="user-name">お名前</label>
                     <input type="text" id="user-name" name="your_name">
-                  </div>
+                </div>
                  <div>
                     <label for="phone">電話番号</label>
                     <input type="text" id="phone" name="your_phone">
