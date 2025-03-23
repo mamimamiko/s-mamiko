@@ -3,6 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>portfolio</title>
         <meta name="description" content="ポートフォリオ">
         <link rel ="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
@@ -19,8 +20,24 @@
                         <img class="logo" src="images/logo.jpg" alt="Mamiko Shirono">
                     </a>
                 </h1>
-                
-                <nav>
+        
+                <!-- ハンバーガーメニューのアイコン -->
+                <div class="hamburger-menu">
+                    <input type="checkbox" id="menu-btn-check">
+                    <label for="menu-btn-check" class="menu-btn"><span></span></label>
+                    <!--ここからメニュー-->
+                    <div class="menu-content">
+                        <ul>
+                            <li><a href="index.html">Top</a></li>
+                        <li><a href="About_me.html">About</a></li>
+                        <li><a href="Works.html">Works</a></li>
+                        <li><a href="index.html#Skills">Skills</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <!--ここまでメニュー-->
+                </div>
+                <nav class="nav-menu">
                     <ul class="main-nav">
                         <li><a href="index.html">Top</a></li>
                         <li><a href="About_me.html">About</a></li>
@@ -97,22 +114,18 @@
     </div>
 
     <div class="contact-form wrapper"> 
-        <article>
-            <header class="post-info">
-                <h2 class="post-title">Contact</h2>
-                <h3 class="title">お問い合わせ</h3>
-            </header>
-            <h4>お仕事のご相談など、お気軽にご連絡ください！</h4>
-    
-            <!-- ボタン構造を変更 -->
-            <button class="big-button">
-                お問い合わせフォームへ
-                <span class="circle">
-                    <a class="arrow" href="index.html#contact">＞</a>
-                </span>
-            </button>
-        </article>
-    </div>
+        <div class="post-info">
+            <h2 class="post-title">Contact</h2>
+            <h3 class="title">お問い合わせ</h3>
+        </div>
+        <h4>お仕事のご相談など、お気軽にご連絡ください！</h4>
+
+        <!-- ボタン構造を変更 -->
+        <a class="big-button" href="index.html#contact">
+            お問い合わせフォームへ
+            <span class="circle">＞</span>
+        </a>
+</div>
 <footer>
     <div class="wrapper">
         <p><small>&copy; All Rights Reserved 2024 ©︎ Mamiko Shirono</small></p>
