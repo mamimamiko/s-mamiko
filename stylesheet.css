@@ -332,8 +332,6 @@ a {
     }
 }
 
-
-
 /* ABOUT ME */
 .about-content {
     border: 1px solid black; /* 枠線 */
@@ -442,7 +440,7 @@ a {
 
     .about-content {
         width: 95%;  /* 幅をさらに狭くして調整 */
-        margin: 20px auto;  /* 余白を調整 */
+        margin: 100px auto;  /* 余白を調整 */
         padding: 20px;
     }
     
@@ -464,7 +462,6 @@ a {
         padding: 10px 25px; /* ボタンのサイズを調整 */
     }
 }
-
 
 
 /* WORKS */
@@ -1428,6 +1425,7 @@ input[type="submit"]:hover {
 @media (max-width: 1250px) {
     .header {
         margin-left: 30px;
+        margin-right: 30px;
     }
     .main-image img {
         margin: 100px 20px;
