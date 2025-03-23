@@ -146,42 +146,201 @@ a {
     line-height: 1.7;
     font-family: 'Amandine', serif;
 }
+
+/* ヘッダーのレイアウト調整 */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* 左右の端に配置 */
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 50px;
+    position: relative; /* メニュー位置調整用 */
+}
+
+/* ハンバーガーメニューの配置 */
+.menu-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+}
+
+.menu-btn span,
+.menu-btn span:before,
+.menu-btn span:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #000;
+    position: absolute;
+}
+
+.menu-btn span:before {
+    bottom: 8px;
+}
+
+.menu-btn span:after {
+    top: 8px;
+}
+
+/* ハンバーガーメニューの×アイコンの色を白に */
+#menu-btn-check:checked ~ .menu-btn span {
+    background-color: transparent; /* 真ん中のバーは透明に */
+}
+
+#menu-btn-check:checked ~ .menu-btn span::before {
+    background-color: #ffffff; /* 上部のバーも白に */
+    bottom: 0;
+    transform: rotate(45deg);
+}
+
+#menu-btn-check:checked ~ .menu-btn span::after {
+    background-color: #ffffff; /* 下部のバーも白に */
+    top: 0;
+    transform: rotate(-45deg);
+}
+
+
+#menu-btn-check {
+    display: none;
+}
+
+/* メニューの表示 */
+.menu-content {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 100%; /* 初期状態は画面外 */
+    z-index: 80;
+    background-color: #000;
+    transition: all 0.5s; /* アニメーション設定 */
+}
+
+.menu-content ul {
+    padding: 70px 10px 0;
+}
+
+.menu-content ul li {
+    border-bottom: solid 1px #ffffff;
+    list-style: none;
+}
+
+.menu-content ul li a {
+    display: block;
+    width: 100%;
+    font-size: 15px;
+    box-sizing: border-box;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 9px 15px 10px 0;
+    position: relative;
+}
+
+.menu-content ul li a::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-top: solid 2px #ffffff;
+    border-right: solid 2px #ffffff;
+    transform: rotate(45deg);
+    position: absolute;
+    right: 11px;
+    top: 16px;
+}
+
+/* チェック時にメニューを表示 */
+#menu-btn-check:checked ~ .menu-content {
+    left: 0;
+}
+
+/* メディアクエリ */
 @media (max-width: 1024px) {
     .home-content {
-        height: 600px; /* 画面が狭くなったときの高さを調整 */
+        height: 600px;
         background-position: center;
-        padding: 20px; /* 余白を確保してデザインが詰まらないように */
+        padding: 20px;
     }
 
     .home-content h2 {
-        font-size: rem; /* フォントサイズを縮小 */
-        line-height: 1.5; /* 行間を少し狭めてコンパクトに */
+        font-size: 4rem;
+        line-height: 1.5;
     }
 }
 
 @media (max-width: 600px) {
     .home-content {
-        height: 500px; /* スマホサイズではさらに高さを調整 */
-        display: flex; /* グリッドからフレックスに変更し、縦中央揃え */
+        height: 500px;
+        display: flex;
         flex-direction: column;
         justify-content: center;
         text-align: center;
     }
 
     .home-content h2 {
-        font-size: 3rem; /* フォントサイズをさらに縮小 */
+        font-size: 3rem;
         line-height: 1.3;
     }
 }
+
+/* ハンバーガーメニューの表示対応 */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: flex; /* 狭い画面で表示 */
+    }
+
+    .nav-menu {
+        display: none; /* 通常メニューは非表示 */
+    }
+
+    .nav-menu.active {
+        display: flex;
+        position: absolute;
+        top: 100px;
+        right: 0;
+        background-color: #e4d0d6;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding: 20px 0;
+    }
+
+    /* ロゴの位置を左端に固定 */
+    .logo {
+        position: absolute;
+        left: 20px;
+        width: 100px;
+        transition: transform 0.3s ease;
+        padding-top: 15px;
+    }
+}
+
+/* 最大幅のときにハンバーガーメニューを非表示 */
+@media (min-width: 767px) {
+    .hamburger-menu {
+        display: none; /* 最大幅以上ではハンバーガーメニューを非表示 */
+    }
+}
+
 
 
 /* ABOUT ME */
 .about-content {
     border: 1px solid black; /* 枠線 */
     padding: 20px 50px 50px 50px;
-    margin: 100px 150px 100px;
-    max-width: 1500px;
-    min-height: 600px;
+    margin: 100px auto; /* 中央配置 */
+    width: 90%;  /* 幅を相対指定に */
+    max-width: 1200px;  /* 最大幅を調整 */
 }
 
 .post-info h2 {
@@ -190,6 +349,7 @@ a {
     text-align: center;
     font-weight: normal;
 }
+
 .post-info h3 {
     color: #bc8092;
     text-align: center;
@@ -201,6 +361,7 @@ a {
     align-items: center;
     justify-content: center;
 }
+
 .title::before,
 .title::after {
     content: '';
@@ -209,33 +370,51 @@ a {
     background-color: #000;
     display: inline-block;
 }
+
 .title::before {
     margin-right: 10px;
 }
+
 .title::after {
     margin-left: 10px;
 }
 
-.img-center {
-    float: right;
-    margin-top: -45px;
+.info-container {  
+    display: flex;
+    align-items: center;
+    gap: 30px; /* 画像とテキストの間隔 */
+    flex-direction: row-reverse; /* 文字と写真の位置を逆に */
 }
+
+.profile-image img {
+    max-width: 100%;  /* 幅の最大値を100%に */
+    height: auto;     /* 縦横比を維持 */
+    border-radius: 10px; /* 角を丸くしてデザイン性UP */
+}
+
+.text-info {
+    width: 100%; /* テキスト部分の幅を調整 */
+}
+
 .post-info h4 {
     font-family: "Heisei Kaku Gothic Std", sans-serif;
     font-size: 30px;
     font-weight: normal;
 }
+
 .post-info h5 {
     font-size: 18px;
     color: #bc8092;
     font-weight: normal;
     margin-bottom: 50px;
 }
+
 .about-content p {
     font-size: 18px;
-    width: 55%;
+    width: 100%; /* 横幅を100%に調整 */
     text-align: justify;
     padding-right: 50px;
+    margin-bottom: 80px;
 }
 
 /* ボタン */
@@ -244,14 +423,46 @@ a {
     background: #e4d0d6;
     color: #000;
     border-radius: 40px;
-    padding: 14px 32px;
-    position: relative;
-    top: 50px;
+    padding: 14px 27px;
     border: 1px solid #000;
+    margin-top: 50px; /* 余白を調整 */
+    width: 100%;
 }
 
 .button:hover {
     background: #c1a3ac;
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) {
+    .info-container {
+        flex-direction: column; /* 画面幅が狭くなったら縦並びに */
+        align-items: center; /* 中央に揃える */
+    }
+
+    .about-content {
+        width: 95%;  /* 幅をさらに狭くして調整 */
+        margin: 20px auto;  /* 余白を調整 */
+        padding: 20px;
+    }
+
+    .post-info h2 {
+        font-size: 2rem; /* タイトルのフォントサイズを調整 */
+    }
+
+    .post-info h3 {
+        font-size: 1.5rem; /* サブタイトルのフォントサイズを調整 */
+    }
+
+    .about-content p {
+        font-size: 16px; /* 段落のフォントサイズを調整 */
+        padding-right: 20px; /* 右側の余白を調整 */
+    }
+
+    .button {
+        font-size: 0.9rem; /* ボタンのフォントサイズを調整 */
+        padding: 10px 25px; /* ボタンのサイズを調整 */
+    }
 }
 
 /* WORKS */
@@ -275,7 +486,7 @@ a {
 /* 画像設定（ズームなし） */
 .image_link img {
     width: 100%;
-    height: 250px; /* 高さを固定 */
+    height: auto; /* 高さを固定 */
     object-fit: cover; /* 画像を適切にトリミング */
     transition: transform 0.3s ease;
 }
@@ -337,12 +548,13 @@ a {
 .skills-content {
     background-color: #f4eef3;
     padding: 50px;
-    margin: 40px 150px;
-    max-width: 1500px;
+    margin: 100px auto; /* 左右をautoにして中央揃え */
+    max-width: 1200px;
     min-height: 600px;
-    margin-bottom: 00px;
+    margin-bottom: 100px;
     text-align: center; /* 中央揃え */
 }
+
 .skills-content p {
     width: 100%;
     margin: 0 auto; /* 親要素である.skills-content内で中央に配置 */
@@ -491,7 +703,7 @@ a {
 /* 画面が 1200px 以上の場合 */
 @media (max-width: 1200px) {
     .skills-content {
-      margin: 40px 100px; /* 画面幅に合わせて余白を調整 */
+      margin: 40px 20px; /* 画面幅に合わせて余白を調整 */
       padding: 30px;
     }
   
@@ -520,7 +732,7 @@ a {
   /* 画面が 768px 以上の場合 */
   @media (max-width: 768px) {
     .skills-content {
-      margin: 20px 50px;
+      margin: 20px 20px;
       padding: 20px;
     }
   
@@ -577,118 +789,123 @@ a {
 /* contact */
 .contact-content.wrapper {
     display: flex;
-    justify-content: center; /* 水平方向に中央揃え */
-    align-items: center; /* 垂直方向に中央揃え */
-    text-align: left; /* テキストを中央揃え */
-    height: 100vh; /* 高さを画面全体に設定 */
-    margin-top: 170px;
-}
-.contact-content p {
-    text-align: center;  /* テキストを中央揃え */
-    font-size: 1.125rem; /* フォントサイズ調整 */
-    margin-bottom: 50px; /* 下部に余白 */
-    white-space: nowrap;
+    max-width: 1200px;
+    margin: 150px auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
 }
 
-/* フォーム　*/
+.contact-content p {
+    text-align: center;
+    font-size: 1.125rem;
+    margin-bottom: 50px;
+}
+
 form {
     display: flex;
-    flex-direction: column; /* 入力フィールドを縦並びに */
-    align-items: center; /* フォームの内容を中央揃え */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     width: 100%;
-    max-width: 600px; /* フォームの最大幅を設定 */
+    max-width: 800px; /* フォームの幅を広く */
 }
 
 form div {
     margin-bottom: 14px;
+    width: 100%;
+    max-width: 600px; /* 各フィールドの最大幅を広く */
 }
 
 label {
     font-size: 1.125rem;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     display: block;
+    text-align: left;
+    width: 100%;
 }
 
 input[type="text"],
 input[type="email"],
 textarea {
     background-color: #ece6e8;
-    padding: 5px 300px;
+    padding: 10px;
     font-size: 1rem;
-}
-
-input[type="text"],
-input[type="email"] {
     width: 100%;
-    max-width: 240px;
+    max-width: 600px; /* 入力フィールドの幅を拡張 */
+    text-align: left;
 }
 
 textarea {
-    width: 100%;
-    max-width: 480px;
-    height: 6rem;
+    height: 8rem; /* テキストエリアも広く */
 }
 
 input[type="submit"] {
     border: 1px solid #000;
     line-height: 1;
-    padding: 14px 50px;
+    padding: 14px 40px;
     background: #d4bcc3;
     color: #000;
-    border-radius: 0; 
-    margin-bottom: 150px;
+    border-radius: 0px;
+    margin-bottom: 50px;
+    cursor: pointer;
+    width: auto;
 }
 
 input[type="submit"]:hover {
     background: #b4939c;
 }
+
+/* レスポンシブ対応 */
 @media (max-width: 768px) {
     .contact-content.wrapper {
-        height: auto; /* 高さを自動に設定 */
-        padding: 20px 20px; /* 画面の端に余白を追加 */
-    
-    }
-
-    .contact-content p {
-        font-size: 1rem; /* フォントサイズを調整 */
+        height: auto;
+        padding: 20px;
     }
 
     form {
-        padding: 0 20px; /* フォームの左右に余白を追加 */
+        width: 90%; /* タブレットではフォーム幅を90%に */
+        max-width: 600px;
+    }
+
+    form div {
+        max-width: 100%;
     }
 
     input[type="text"],
     input[type="email"],
     textarea {
-        padding: 10px; /* パディングを調整 */
+        max-width: 100%;
     }
 
     input[type="submit"] {
-        padding: 14px 30px; /* ボタンのパディングを調整 */
+        width: auto;
     }
 }
 
-/* さらに小さな画面対応 */
 @media (max-width: 480px) {
     .contact-content.wrapper {
-        padding: 10px; /* 画面の端に余白を追加 */
+        padding: 10px;
     }
 
     form {
-        padding: 0 10px; /* フォームの左右に余白を追加 */
+        width: 100%; /* スマホではフォーム幅を100%に */
+        padding: 0 10px;
     }
 
     input[type="submit"] {
-        width: 100%; /* ボタンの幅を100%に設定 */
-        max-width: 100%; /* 最大幅を100%に設定 */
+        width: auto;
     }
 }
 
+
+
 /* ABOUT ME */
 .about-me {
-    margin: 100px 150px;
-    max-width: 1500px;
-    min-height: 600px;
+    margin: 100px auto;
+    max-width: 1200px;
 }
 
 .profile-card {
@@ -756,7 +973,6 @@ input[type="submit"]:hover {
 }
 @media (max-width: 1024px) {
     .about-me {
-        margin: 50px 30px;
         min-height: auto;
     }
 
@@ -796,28 +1012,35 @@ input[type="submit"]:hover {
     }
 }
 
-/* biography */
-/* タイムライン全体の設定 */
+/* Biography */
 .biography {
-  background-color: #f4eef3; /* 薄めのピンク（好みに応じて変更） */
-  padding: 50px; 
-  padding-left: 100px;/* 余白をつけて見やすく */
-  position: relative; /* 他の要素との重なりを調整 */
-  margin: 100px 150px;
-  z-index: -1; /* 最背面に配置 */
+    background-color: #f4eef3; /* 薄めのピンク（好みに応じて変更） */
+    padding: 50px;
+    padding-left: 150px; /* 左側の余白を増やす */
+    padding-right: 150px; /* 右側の余白を追加 */
+    position: relative; /* 他の要素との重なりを調整 */
+    margin: 100px auto; /* 左右中央寄せ */
+    z-index: -1; /* 最背面に配置 */
+    max-width: 1200px; /* 最大幅を設定 */
 }
+
 .timeline {
     list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-  }
 .timeline-content h3 {
     font-size: 20px;
     margin-top: 10px;
     margin-bottom: 20px;
-  }
+}
 
-  /* for Desktop */
-  @media ( min-width : 640px ){
+/* for Desktop */
+@media (min-width: 640px) {
+    .biography {
+        margin: 100px auto; /* デスクトップでは中央寄せ */
+    }
     .timeline > li {
       overflow: hidden;
       margin: 0;
@@ -830,12 +1053,13 @@ input[type="submit"]:hover {
       margin-top: 20px;
     }
     .timeline-content {
-    font-size: 17px;
-      width: 80%;
+      font-size: 17px;
+      width: 60%;
       float: left;
       border-left: 2px #c38d9d solid;
       padding-left: 30px;
       padding-bottom: 50px;
+      margin-right: 50px; /* 右側の余白を追加して少し右寄せ */
     }
     .timeline-content:before {
       content: '';
@@ -847,7 +1071,31 @@ input[type="submit"]:hover {
       top: 20px;
       border-radius: 100%;
     }
-  }
+}
+
+/* for Tablet or Smaller Devices */
+@media (max-width: 768px) {
+    .biography {
+      padding-left: 20px; /* 左右のパディングを調整 */
+      padding-right: 20px; /* 左右のパディングを調整 */
+      margin: 100px 20px; /* 画面が狭くなると左右のマージンを30pxに */
+    }
+
+    .timeline-content {
+      width: 100%; /* スマホサイズでは幅を100%にする */
+      margin-right: 0; /* 右のマージンをリセット */
+      padding-left: 15px; /* 左のパディングを調整 */
+      border-left: none; /* スマホではボーダーを無くす */
+    }
+
+    .timeline-date {
+      font-size: 16px; /* スマホサイズでフォントサイズを小さく */
+    }
+
+    .timeline-content:before {
+      display: none; /* スマホサイズでは丸を非表示 */
+    }
+}
 
 /* strength */
 .container {
@@ -862,7 +1110,6 @@ input[type="submit"]:hover {
 
 .section {
     display: flex;
-    flex-wrap: wrap;
     border: 2px solid #ebd5db;
     padding: 20px;
     margin-bottom: 30px;
@@ -991,8 +1238,8 @@ input[type="submit"]:hover {
 
 /* 白丸 */
 .circle {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background-color: #fff;
     border-radius: 50%;
     display: flex;
@@ -1000,10 +1247,10 @@ input[type="submit"]:hover {
     justify-content: center;
     border: 1px solid #000;
     transition: background-color 0.3s ease;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
-    color: #000;
     padding-left: 6px;
+    color: #000;
 }
 
 .circle:hover {
@@ -1046,7 +1293,7 @@ input[type="submit"]:hover {
 
 .image_link2 img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
