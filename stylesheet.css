@@ -445,7 +445,7 @@ a {
         margin: 20px auto;  /* 余白を調整 */
         padding: 20px;
     }
-
+    
     .post-info h2 {
         font-size: 2rem; /* タイトルのフォントサイズを調整 */
     }
@@ -464,6 +464,8 @@ a {
         padding: 10px 25px; /* ボタンのサイズを調整 */
     }
 }
+
+
 
 /* WORKS */
 .grid {
@@ -971,41 +973,46 @@ input[type="submit"]:hover {
     margin-left: 100px;
     padding-right: 25px;
 }
-@media (max-width: 1024px) {
+
+@media (max-width: 1250px) {
     .about-me {
-        min-height: auto;
+        margin: 100px 20px;
+    }
+}
+@media (max-width: 1024px) {
+.about-me {
+    margin: 100px 20px;
     }
 
-    .profile-card {
+.profile-card {
         flex-direction: column;
         align-items: center;
         padding: 20px;
     }
 
-    .profile-card::before {
+.profile-card::before {
         top: 10px;
         left: 10px;
         width: 100%;
         height: 100%;
     }
 
-    .profile-image {
+.profile-image {
         width: 200px;
         height: 200px;
         margin: 0;
     }
 
-    .profile-info h1 {
+.profile-info h1 {
         margin-left: 0;
         font-size: 22px;
     }
 
-    .english-name {
+.english-name {
         margin-left: 10px;
         font-size: 16px;
     }
-
-    .profile-info p {
+ .profile-info p {
         width: 100%;
         margin: 20px 0;
         font-size: 16px;
@@ -1037,6 +1044,11 @@ input[type="submit"]:hover {
 }
 
 /* for Desktop */
+@media (max-width: 1250px) {
+    .biography {
+        margin: 100px 20px;
+    }
+}
 @media (min-width: 640px) {
     .biography {
         margin: 100px auto; /* デスクトップでは中央寄せ */
@@ -1087,7 +1099,9 @@ input[type="submit"]:hover {
       padding-left: 15px; /* 左のパディングを調整 */
       border-left: none; /* スマホではボーダーを無くす */
     }
-
+   .timeline-content p {
+      margin-bottom: 20px; /* 段落の下の余白を調整 */
+   }
     .timeline-date {
       font-size: 16px; /* スマホサイズでフォントサイズを小さく */
     }
@@ -1257,6 +1271,18 @@ input[type="submit"]:hover {
     background-color: #e0e0e0;
 }
 
+@media (max-width: 768px) {
+    .contact-content.wrapper {
+        padding: 20px 10px;    /* スマホでは余白を減らす */
+        margin: 50px 20px;     /* マージンを減らしてコンパクトに */
+    }
+
+    .big-button {
+        font-size: 20px;      /* ボタンが小さくなりすぎないように調整 */
+        padding: 15px 40px;
+    }
+}
+
 /* Works2 */
 .works-content{
     margin-top: 100px;
@@ -1399,6 +1425,15 @@ input[type="submit"]:hover {
 }
 
 /* 小さな画面向けの調整 */
+@media (max-width: 1250px) {
+    .header {
+        margin-left: 30px;
+    }
+    .main-image img {
+        margin: 100px 20px;
+    }
+}
+
 @media (max-width: 768px) {
     .overview {
         flex-direction: column;
