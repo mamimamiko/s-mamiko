@@ -384,8 +384,8 @@ a {
     flex-direction: row-reverse; /* 文字と写真の位置を逆に */
 }
 
-.profile-image img {
-    max-width: 100%;  /* 幅の最大値を100%に */
+.img-center img {
+    max-width: 100%;  /* 親要素の幅を超えないように */
     height: auto;     /* 縦横比を維持 */
     border-radius: 10px; /* 角を丸くしてデザイン性UP */
 }
@@ -411,8 +411,7 @@ a {
     font-size: 18px;
     width: 100%; /* 横幅を100%に調整 */
     text-align: justify;
-    padding-right: 50px;
-    margin-bottom: 80px;
+    margin-bottom: 60px;
 }
 
 /* ボタン */
@@ -423,7 +422,6 @@ a {
     border-radius: 40px;
     padding: 14px 27px;
     border: 1px solid #000;
-    margin-top: 50px; /* 余白を調整 */
     width: 100%;
 }
 
@@ -441,25 +439,38 @@ a {
     .about-content {
         width: 95%;  /* 幅をさらに狭くして調整 */
         margin: 100px auto;  /* 余白を調整 */
-        padding: 20px;
+        padding: 50px 20px;
     }
-    
+
+    .img-center img {
+        width: 80%;  /* 写真の幅を80%に調整して中央配置 */
+        height: auto;     /* 縦横比を維持 */
+        border-radius: 10px; /* 角を丸くしてデザイン性UP */
+        display: block;   /* 中央配置のためにblock要素化 */
+        margin: 0 auto;   /* 中央配置 */
+   }
+
     .post-info h2 {
         font-size: 2rem; /* タイトルのフォントサイズを調整 */
     }
 
     .post-info h3 {
-        font-size: 1.5rem; /* サブタイトルのフォントサイズを調整 */
+        font-size: 18px; /* サブタイトルのフォントサイズを調整 */
     }
+
+    .text-info {
+        text-align: center;
+    }    
 
     .about-content p {
         font-size: 16px; /* 段落のフォントサイズを調整 */
-        padding-right: 20px; /* 右側の余白を調整 */
+        width: 100%; /* 横幅を100%に調整 */
     }
 
     .button {
         font-size: 0.9rem; /* ボタンのフォントサイズを調整 */
         padding: 10px 25px; /* ボタンのサイズを調整 */
+        margin-bottom: 50px;
     }
 }
 
@@ -522,6 +533,7 @@ a {
 @media (max-width: 600px) {
     .grid {
         grid-template-columns: 1fr; /* 1列 */
+        gap: 60px;
     }
 }
 
@@ -707,7 +719,7 @@ a {
   
     .list {
       grid-template-columns: repeat(2, 1fr); /* 2列レイアウトを維持 */
-      gap: 40px 20px; /* 縦横の余白を調整 */
+      gap: 40px 200px; /* 縦横の余白を調整 */
     }
   
     .box h2 {
@@ -753,34 +765,6 @@ a {
   
     .barometer1 .divider, .barometer2 .divider {
       height: 70%; /* バロメーター内の線の高さを調整 */
-    }
-  }
-  
-  /* 画面が 480px 以上の場合 */
-  @media (max-width: 480px) {
-    .skills-content {
-      margin: 100px 20px;
-      padding: 15px;
-    }
-  
-    .list {
-      gap: 20px 10px; /* 縦横の余白を調整 */
-    }
-  
-    .box h2 {
-      font-size: 12px; /* フォントサイズをさらに小さく */
-    }
-  
-    .list img {
-      width: 25px; /* アイコンをさらに小さく */
-    }
-  
-    .barometer1, .barometer2 {
-      width: 90px; /* バロメーターの幅をさらに調整 */
-    }
-  
-    .barometer1 .divider, .barometer2 .divider {
-      height: 60%; /* バロメーター内の線の高さを調整 */
     }
   }
 
@@ -968,7 +952,6 @@ input[type="submit"]:hover {
     width: 80%;
     margin-top: 40px;
     margin-left: 100px;
-    padding-right: 25px;
 }
 
 @media (max-width: 1250px) {
@@ -977,7 +960,7 @@ input[type="submit"]:hover {
     }
 }
 @media (max-width: 1024px) {
-.about-me {
+    .about-me {
     margin: 100px 20px;
     }
 
@@ -1000,16 +983,19 @@ input[type="submit"]:hover {
         margin: 0;
     }
 
-.profile-info h1 {
+    .profile-info h1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         margin-left: 0;
-        font-size: 22px;
     }
 
-.english-name {
-        margin-left: 10px;
-        font-size: 16px;
+    .english-name {
+        margin-left: 0;
+        margin-top: 5px; /* 適度な余白 */
     }
- .profile-info p {
+    
+    .profile-info p {
         width: 100%;
         margin: 20px 0;
         font-size: 16px;
@@ -1020,10 +1006,8 @@ input[type="submit"]:hover {
 .biography {
     background-color: #f4eef3; /* 薄めのピンク（好みに応じて変更） */
     padding: 50px;
-    padding-left: 150px; /* 左側の余白を増やす */
-    padding-right: 150px; /* 右側の余白を追加 */
     position: relative; /* 他の要素との重なりを調整 */
-    margin: 100px auto; /* 左右中央寄せ */
+    margin: 100px 150px; /* 左右中央寄せ */
     z-index: -1; /* 最背面に配置 */
     max-width: 1200px; /* 最大幅を設定 */
 }
@@ -1033,7 +1017,9 @@ input[type="submit"]:hover {
     padding: 0;
     margin: 0;
 }
-
+.timeline-content p {
+    padding-bottom: 50px;
+}
 .timeline-content h3 {
     font-size: 20px;
     margin-top: 10px;
@@ -1041,14 +1027,9 @@ input[type="submit"]:hover {
 }
 
 /* for Desktop */
-@media (max-width: 1250px) {
-    .biography {
-        margin: 100px 20px;
-    }
-}
 @media (min-width: 640px) {
     .biography {
-        margin: 100px auto; /* デスクトップでは中央寄せ */
+      margin: 100px auto; /* デスクトップでは中央寄せ */
     }
     .timeline > li {
       overflow: hidden;
@@ -1063,12 +1044,12 @@ input[type="submit"]:hover {
     }
     .timeline-content {
       font-size: 17px;
-      width: 60%;
+      width: 80%;
       float: left;
       border-left: 2px #c38d9d solid;
       padding-left: 30px;
-      padding-bottom: 50px;
       margin-right: 50px; /* 右側の余白を追加して少し右寄せ */
+      padding-bottom: 0;
     }
     .timeline-content:before {
       content: '';
@@ -1081,13 +1062,42 @@ input[type="submit"]:hover {
       border-radius: 100%;
     }
 }
+@media (max-width: 1250px) {
+    .biography {
+        margin: 100px 20px;
+    }
+}
 
+@media (max-width: 960px) {
+    .biography {
+        margin: 100px 20px;
+    }
+
+    .timeline-content {
+        width: 80%;  /* 幅を60%に */
+        margin-right: 0;
+        border-left: 2px #c38d9d solid; /* ボーダーを維持 */
+        padding-left: 30px;
+    }
+
+    .timeline-content:before {
+        display: block; /* ピンクの丸も表示 */
+        left: 103px;
+        top: 20px;
+    }
+
+    .timeline-date {
+        width: 110px; /* 日付の幅を維持 */
+        padding-left: 0;
+        margin-top: 20px;
+    }
+}
 /* for Tablet or Smaller Devices */
-@media (max-width: 768px) {
+@media (max-width: 705px) {
     .biography {
       padding-left: 20px; /* 左右のパディングを調整 */
       padding-right: 20px; /* 左右のパディングを調整 */
-      margin: 100px 20px; /* 画面が狭くなると左右のマージンを30pxに */
+      margin: 100px 20px; /* 画面が狭くなると左右のマージンを20pxに */
     }
 
     .timeline-content {
@@ -1098,16 +1108,17 @@ input[type="submit"]:hover {
     }
    .timeline-content p {
       margin-bottom: 20px; /* 段落の下の余白を調整 */
+      padding-bottom: 0;
    }
     .timeline-date {
       font-size: 16px; /* スマホサイズでフォントサイズを小さく */
+      padding-left: 15px; /* 左のパディングを調整 */
     }
 
     .timeline-content:before {
       display: none; /* スマホサイズでは丸を非表示 */
     }
 }
-
 /* strength */
 .container {
     max-width: 1200px;
@@ -1247,6 +1258,9 @@ input[type="submit"]:hover {
     flex-wrap: nowrap;
 }
 
+.big-button:hover {
+    background: #a36b7d;
+}
 /* 白丸 */
 .circle {
     width: 40px;
@@ -1264,10 +1278,6 @@ input[type="submit"]:hover {
     color: #000;
 }
 
-.circle:hover {
-    background-color: #e0e0e0;
-}
-
 @media (max-width: 768px) {
     .contact-content.wrapper {
         padding: 20px 10px;    /* スマホでは余白を減らす */
@@ -1278,7 +1288,11 @@ input[type="submit"]:hover {
         font-size: 20px;      /* ボタンが小さくなりすぎないように調整 */
         padding: 15px 40px;
     }
+    .contact-form h4 {
+        font-size: 18px;      /* タイトルのフォントサイズを調整 */
+    }
 }
+
 
 /* Works2 */
 .works-content{
@@ -1335,7 +1349,7 @@ input[type="submit"]:hover {
 @media screen and (max-width: 768px) {
     .grid2 {
         grid-template-columns: 1fr; /* モバイルで1列表示 */
-        gap: 20px; /* 間隔を少し狭める */
+        gap: 60px; /* 間隔を少し狭める */
     }
 
     .image_link2 {
@@ -1405,20 +1419,20 @@ input[type="submit"]:hover {
 .section-title {
     background-color: #e4d0d6;
     font-size: 20px;
-    width: 150px;
+    width: 170px;
     height: 60px;
-    border-radius: 45%;
+    border-radius: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 20px;
-    white-space: nowrap;
+    margin-right: 30px;
 }
 
 .explanation {
     font-size: 16px;
     flex: 1; /* 説明テキストが幅いっぱいに広がるように */
     margin-right: 0;
+    margin-top: 20px;
 }
 
 /* 小さな画面向けの調整 */
